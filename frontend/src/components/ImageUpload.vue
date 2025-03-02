@@ -150,7 +150,6 @@ export default {
     };
   },
   mounted() {
-    // Check backend connection on mount
     this.checkBackendConnection();
   },
   methods: {
@@ -191,13 +190,12 @@ export default {
           headers: {
             'Content-Type': 'multipart/form-data',
           },
-          withCredentials: false, // Important for CORS
-          timeout: 30000 // 30 second timeout
+          withCredentials: false, 
+          timeout: 30000 
         });
         
         this.result = response.data;
         
-        // Check if the response contains an image URL
         if (response.data.image_url) {
           this.resultImage = response.data.image_url;
         } else {
@@ -210,15 +208,11 @@ export default {
         
         let errorMessage = 'Error processing image. ';
         
-        // Add more detailed error information
         if (error.response) {
-          // The request was made and the server responded with a status code outside of 2xx
           errorMessage += `Server responded with status ${error.response.status}`;
         } else if (error.request) {
-          // The request was made but no response was received
           errorMessage += 'No response received from server. Check if the backend is running.';
         } else {
-          // Something happened in setting up the request
           errorMessage += error.message;
         }
         

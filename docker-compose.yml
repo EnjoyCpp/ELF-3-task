@@ -15,8 +15,8 @@ services:
     networks:
       - app-network
     environment:
-      - CHOKIDAR_USEPOLLING=true  # For hot reload to work properly in Docker
-      - VUE_APP_API_URL=http://backend:5000  # Point to the backend service name
+      - CHOKIDAR_USEPOLLING=true  
+      - VUE_APP_API_URL=http://backend:5000 
 
   backend:
     build:
@@ -29,7 +29,6 @@ services:
       - ./backend/processed:/app/processed
     networks:
       - app-network
-    # Make sure backend is accessible from all origins in development
     environment:
       - FLASK_ENV=development
       - FLASK_DEBUG=1

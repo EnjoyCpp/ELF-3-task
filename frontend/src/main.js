@@ -1,16 +1,13 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 
-// Vuetify
 import 'vuetify/styles'
 import { createVuetify } from 'vuetify'
 import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
 
-// Vuetify icons
 import { aliases, mdi } from 'vuetify/iconsets/mdi'
 
-// Import the MDI font CSS (you'll need to install this: npm install @mdi/font)
 import '@mdi/font/css/materialdesignicons.css'
 
 const vuetify = createVuetify({

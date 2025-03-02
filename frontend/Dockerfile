@@ -10,19 +10,18 @@ COPY package*.json ./
 # Install dependencies
 RUN npm install
 
-# Create the necessary directories for npm cache if they do not exist
+# Copy the app files
+COPY . .
+
+# Create the necessary directories and fix permissions
+# This needs to happen AFTER copying all files
 RUN mkdir -p /app/.npm && \
     mkdir -p /app/node_modules/.cache && \
     chown -R node:node /app && \
-    chmod -R 755 /app/node_modules && \
-    chmod -R 755 /app/.npm && \
-    chmod -R 755 /app/node_modules/.cache
+    chmod -R 777 /app/node_modules/.cache
 
 # Switch to the node user
 USER node
-
-# Copy the app files
-COPY . .
 
 # Expose port 8080
 EXPOSE 8080
